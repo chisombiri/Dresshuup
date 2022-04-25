@@ -1,0 +1,55 @@
+.button-container {
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.4px;
+    line-height: 50px;
+    padding: 8 24px;
+    font-size: 15px;
+    background-color: #FFE202;
+    color: #000;
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  
+    &:hover {
+      background-color: #222;
+      color: #ffffff;
+      border: 1px solid #222;
+      transition: 300ms ease all;
+    }
+
+    &:active {
+        background-color: #ffffff;
+        color: #222;
+        border: 1px solid #222;
+        transition: 200ms ease all;
+    }
+  
+    &.google-sign-in {
+      background-color: #4285f4;
+      color: white;
+  
+      &:hover {
+        background-color: #357ae8;
+        border: none;
+      }
+    }
+  
+    &.inverted {
+        background-color: #ffffff;
+        color: #222;
+        border: 1px solid #222;
+  
+      &:hover {
+        background-color: #FFE202;
+        color: #000;
+        border: none;
+      }
+    }
+  }
+  

@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase"
+import FormInput from "../Form-input/Form-input";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase";
+import Button from "../Button/Button";
+import "./Sign-up-form.scss";
 
 //initial state for all the form fields
 const defaultFormFields = {
@@ -12,7 +15,8 @@ const defaultFormFields = {
 const SignUp = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
-    console.log(formFields);
+
+    // console.log(formFields);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -50,22 +54,19 @@ const SignUp = () => {
     }
  
     return(
-        <div>
-            <h2>Sign Up with email and password</h2>
+        <div className="sign-up-container">
+            <h2>Don't have an account?</h2>
+            <span>Sign Up with email and password</span>
             <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input type="text" name="displayName" value={displayName} onChange={handleChange} required/>
+                <FormInput label="Username" type="text" name="displayName" value={displayName} onChange={handleChange} required/>
 
-                <label>Email</label>
-                <input type="email" name="email" value={email} onChange={handleChange} required/>
+                <FormInput label="Email" type="email" name="email" value={email} onChange={handleChange} required/>
 
-                <label>Password</label>
-                <input type="password" minLength="8" name="password" value={password} onChange={handleChange} required/>
+                <FormInput label="Password" type="password" minLength="8" name="password" value={password} onChange={handleChange} required/>
 
-                <label>Confirm Password</label>
-                <input type="password" minLength="8" name="confirmPassword" value={confirmPassword} onChange={handleChange} required/>
+                <FormInput label="Confirm Password" type="password" minLength="8" name="confirmPassword" value={confirmPassword} onChange={handleChange} required/>
 
-                <button type="submit">Sign Up</button>
+                <Button type="submit">Sign Up</Button>
             </form>
         </div>
     )

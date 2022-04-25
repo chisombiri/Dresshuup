@@ -45,8 +45,8 @@ const firebaseConfig = {
     const userDocRef = doc(db, 'users', userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
 
-    console.log(userDocRef);
-    console.log(userSnapshot);
+    // console.log(userDocRef);
+    // console.log(userSnapshot);
 
     //Checking if user data exists
     //Return userDoc Ref if user snapshot exists. 
