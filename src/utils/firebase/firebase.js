@@ -1,7 +1,7 @@
 //importing initialising function
 import { initializeApp } from 'firebase/app';
 //importing necessary authentication tools
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import { getAuth, signInWithRedirect, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider} from 'firebase/auth';
 //import get firestore
 //doc method to retireve documents
 //get doc and set doc to access and set data
@@ -20,29 +20,33 @@ const firebaseConfig = {
   // Initialize Firebase
   const firebaseApp = initializeApp(firebaseConfig);
 
-  //initialise provider object from the class
-  const provider = new GoogleAuthProvider();
+  //initialise GOOGLE provider object from the class
+  const googleProvider = new GoogleAuthProvider();
 
   //set custom parameters
-  provider.setCustomParameters({
+  googleProvider.setCustomParameters({
       //prompt client to always select an account
     prompt: "select_account"
   });
 
   export const auth = getAuth();
-  //exporting popup sign ing to be used by signing component
-  export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+  //exporting popup sign in to be used by signing component
+  export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+  
+  //exporting redirect sign in to be used by signing component
+  export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
   //creating db from firestore
   export const db = getFirestore();
 
   //reating user document from auth
-  export const createUserDocumentFromAuth = async (userAuth) => {
+  export const createUserDocumentFromAuth = async (userAuth, additionalInfo = {}) => {
+    if(!userAuth) return;
     const userDocRef = doc(db, 'users', userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
+
     console.log(userDocRef);
     console.log(userSnapshot);
-    console.log(userSnapshot.exists());
 
     //Checking if user data exists
     //Return userDoc Ref if user snapshot exists. 
@@ -57,7 +61,8 @@ const firebaseConfig = {
             await setDoc(userDocRef, {
                 displayName,
                 email,
-                createdAt
+                createdAt,
+                ...additionalInfo
             });
         } catch (error) {
             console.log("error creating user", error.message);
@@ -65,4 +70,10 @@ const firebaseConfig = {
     }
     //if user exists
     return userDocRef;
+  }
+
+  export const createAuthUserWithEmailAndPassword = async (email, password) => {
+    if(!email || !password) return;
+
+    return await createUserWithEmailAndPassword(auth, email, password);
   }
