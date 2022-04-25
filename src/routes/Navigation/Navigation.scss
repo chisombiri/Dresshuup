@@ -1,0 +1,27 @@
+.navigation {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  
+    .logo-container {
+      height: 100%;
+      width: 70px;
+      padding: 24px;
+    }
+  
+    .links-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+  
+      .link {
+        padding: 1px 16px;
+        cursor: pointer;
+      }
+    }
+}
