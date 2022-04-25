@@ -1,7 +1,13 @@
 //importing initialising function
 import { initializeApp } from 'firebase/app';
 //importing necessary authentication tools
-import { getAuth, signInWithRedirect, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider} from 'firebase/auth';
+import { getAuth, 
+        signInWithRedirect, 
+        signInWithPopup, 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword, 
+        GoogleAuthProvider
+        } from 'firebase/auth';
 //import get firestore
 //doc method to retireve documents
 //get doc and set doc to access and set data
@@ -76,4 +82,10 @@ const firebaseConfig = {
     if(!email || !password) return;
 
     return await createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+    if(!email || !password) return;
+
+    return await signInWithEmailAndPassword(auth, email, password);
   }
