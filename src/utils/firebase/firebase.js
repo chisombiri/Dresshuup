@@ -7,7 +7,8 @@ import { getAuth,
         signInWithEmailAndPassword, 
         createUserWithEmailAndPassword, 
         GoogleAuthProvider,
-        signOut
+        signOut,
+        onAuthStateChanged
         } from 'firebase/auth';
 //import get firestore
 //doc method to retireve documents
@@ -92,3 +93,5 @@ const firebaseConfig = {
   }
 
   export const signOutUser = async () => await signOut(auth);
+
+  export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
