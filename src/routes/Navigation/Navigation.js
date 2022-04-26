@@ -1,9 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as DresshuupLogo } from "../../assets/dresshuup.svg";
+import { UserContext } from "../../contexts/user-context";
 import './Navigation.scss';
 
 const Navigation = () => {
+    const { currentUser } = useContext(UserContext);
+    console.log(currentUser);
     return(
       <Fragment>
         <div className="navigation">
