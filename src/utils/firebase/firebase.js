@@ -6,7 +6,8 @@ import { getAuth,
         signInWithPopup, 
         signInWithEmailAndPassword, 
         createUserWithEmailAndPassword, 
-        GoogleAuthProvider
+        GoogleAuthProvider,
+        signOut
         } from 'firebase/auth';
 //import get firestore
 //doc method to retireve documents
@@ -89,3 +90,5 @@ const firebaseConfig = {
 
     return await signInWithEmailAndPassword(auth, email, password);
   }
+
+  export const signOutUser = async () => await signOut(auth);
