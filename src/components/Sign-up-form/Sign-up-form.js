@@ -58,13 +58,13 @@ const SignUpForm = () => {
             <h2>Don't have an account?</h2>
             <span>Sign Up with email and password</span>
             <form onSubmit={handleSubmit}>
-                <FormInput label="Username" type="text" name="displayName" value={displayName} onChange={handleChange} required/>
+                <FormInput label="Username, e.g: chisombiri" type="text" name="displayName" value={displayName} onChange={handleChange} required/>
 
                 <FormInput label="Email" type="email" name="email" value={email} onChange={handleChange} required/>
 
-                <FormInput label="Password" type="password" minLength="8" name="password" value={password} onChange={handleChange} required/>
+                <FormInput label="Password: 8 characters min" type="password" minLength="8" name="password" value={password} onChange={handleChange} required/>
 
-                <FormInput label="Confirm Password" type="password" minLength="8" name="confirmPassword" value={confirmPassword} onChange={handleChange} required/>
+                <FormInput label="Confirm Password: 8 characters min" type="password" minLength="8" name="confirmPassword" value={confirmPassword} onChange={handleChange} required/>
 
                 <Button type="submit">Sign Up</Button>
             </form>

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../Form-input/Form-input";
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword  } from "../../utils/firebase/firebase";
+import { UserContext } from "../../contexts/user-context";
 import Button from "../Button/Button";
 import "./Sign-in-form.scss";
 import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
