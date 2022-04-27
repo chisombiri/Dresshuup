@@ -1,4 +1,5 @@
 import Categories from '../../components/Categories/Categories';
+import { ReactComponent as Copyright } from "../../assets/copyright.svg";
 
 const Home = () => {
 
@@ -31,8 +32,11 @@ const Home = () => {
   ]
 
   return (
-    <Categories categories={categories}/>
+    <div>
+      <Categories categories={categories}/>
+      <div style={{textAlign: "center"}}><Copyright/> 2022, Chisombiri Nlewedim</div>
+    </div>
   );
-}
+};
 
 export default Home;

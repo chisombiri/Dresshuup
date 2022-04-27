@@ -3,6 +3,8 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as DresshuupLogo } from "../../assets/dresshuup.svg";
 import { UserContext } from "../../contexts/user-context";
 import { signOutUser } from "../../utils/firebase/firebase";
+import CartIcon from "../../components/Cart-Icon/Cart-Icon";
+import CartDropDown from "../../components/CartDropDown/CartDropDown";
 import './Navigation.scss';
 
 const Navigation = () => {
@@ -29,7 +31,9 @@ const Navigation = () => {
                         </Link>
                     )
                 }
+                <CartIcon />
             </div>
+            <CartDropDown />
         </div>
         <Outlet />
       </Fragment>

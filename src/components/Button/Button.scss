@@ -27,6 +27,7 @@
         background-color: #ffffff;
         color: #222;
         border: 1px solid #222;
+        transform: scale(0.95);
         transition: 200ms ease all;
     }
   
@@ -36,7 +37,7 @@
       justify-content: space-around;
       color: #4285f4;
       background-color: white;
-      border: 1px solid #555;
+      border: 1px solid #333;
   
       &:hover {
         color: #0a68ff;
@@ -48,13 +49,14 @@
     &.inverted {
         background-color: #ffffff;
         color: #222;
-        border: 1px solid #222;
+        border: 1px solid #333;
   
-      &:hover {
+      &:hover, :active {
         background-color: #FFE202;
-        color: #000;
+        color: #222;
         border: none;
       }
+
     }
   }
   
