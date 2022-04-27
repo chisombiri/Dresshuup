@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as DresshuupLogo } from "../../assets/dresshuup.svg";
 import { UserContext } from "../../contexts/user-context";
+import { CartContext } from "../../contexts/cart-context";
 import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../../components/Cart-Icon/Cart-Icon";
 import CartDropDown from "../../components/CartDropDown/CartDropDown";
@@ -9,6 +10,7 @@ import './Navigation.scss';
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
+    const { isCartOpen } = useContext(CartContext);
 
     return(
       <Fragment>
@@ -33,7 +35,7 @@ const Navigation = () => {
                 }
                 <CartIcon />
             </div>
-            <CartDropDown />
+            {isCartOpen && <CartDropDown />}
         </div>
         <Outlet />
       </Fragment>
