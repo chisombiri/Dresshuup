@@ -13,7 +13,7 @@ import { getAuth,
 //import get firestore
 //doc method to retireve documents
 //get doc and set doc to access and set data
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch } from "firebase/firestore";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
@@ -46,6 +46,21 @@ const firebaseConfig = {
 
   //creating db from firestore
   export const db = getFirestore();
+
+  //method to add collection and documents to firestore
+  export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = collection(db, collectionKey);
+    const batch = writeBatch(db);
+
+    objectsToAdd.forEach((object) => {
+      const docRef = doc(collectionRef, object.title.toLowerCase());
+      //set data location with object
+      batch.set(docRef, object);
+    });
+
+    await batch.commit();
+    console.log('done');
+  }
 
   //reating user document from auth
   export const createUserDocumentFromAuth = async (userAuth, additionalInfo = {}) => {
