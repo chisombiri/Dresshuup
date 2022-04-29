@@ -6,7 +6,7 @@ const Home = () => {
   const categories = [
     {
       "id": 1,
-      "title": "Trainers",
+      "title": "Sneakers",
       "imageUrl": "https://i.ibb.co/WBVfnYf/pexels-deybson-mallony-4914807-1.jpg"
     },
     {

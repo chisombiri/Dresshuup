@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import App from './App';
 import { UserProvider } from './contexts/user-context';
-import { ProductsProvider } from './contexts/products-context';
+import { CategoriesProvider } from './contexts/categories-context';
 import { CartProvider } from './contexts/cart-context';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,11 +13,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider> {/*any component inside the app can access the context tree with UserProvider */}
-      <ProductsProvider>
+      <CategoriesProvider>
         <CartProvider>
           <App />
         </CartProvider>
-      </ProductsProvider>
+      </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
