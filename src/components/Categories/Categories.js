@@ -1,3 +1,4 @@
+//Categories cards container that shows on home page
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import './Categories.scss';

@@ -1,4 +1,4 @@
-.category-container {
+.category-item-container {
     min-width: 30%;
     height: 240px;
     display: flex;
@@ -17,7 +17,7 @@
         transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
       }
   
-      & .category-body {
+      & .category-item-body {
         opacity: 0.9;
       }
     }
@@ -41,7 +41,7 @@
       background-position: center;
     }
   
-    .category-body {
+    .category-item-body {
       height: 90px;
       padding: 0 25px;
       display: flex;
