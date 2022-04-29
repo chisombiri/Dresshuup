@@ -13,7 +13,7 @@ import { getAuth,
 //import get firestore
 //doc method to retireve documents
 //get doc and set doc to access and set data
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from "firebase/firestore";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
@@ -59,8 +59,23 @@ const firebaseConfig = {
     });
 
     await batch.commit();
-    console.log('done');
-  }
+    console.log('successful'); //checking success of adding collection
+  };
+
+  //Method to get products and categories from firestore
+  export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const que_ry = query(collectionRef);
+
+    const querySnapshot = await getDocs(que_ry);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data();
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {});
+
+    return categoryMap;
+  };
 
   //reating user document from auth
   export const createUserDocumentFromAuth = async (userAuth, additionalInfo = {}) => {
