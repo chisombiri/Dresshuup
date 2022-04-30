@@ -1,4 +1,7 @@
-.button-container {
+import styled from "styled-components";
+
+//button base styles
+export const BaseButton = styled.button`
     min-width: 160px;
     width: auto;
     height: 50px;
@@ -15,7 +18,7 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-  
+
     &:hover {
       background-color: #222;
       color: #ffffff;
@@ -30,33 +33,33 @@
         transform: scale(0.95);
         transition: 200ms ease all;
     }
-  
-    &.google-sign-in {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      color: #4285f4;
-      background-color: white;
-      border: 1px solid #333;
-  
-      &:hover {
-        color: #0a68ff;
-        background-color: #eeeeee;
-        transition: 200ms ease all;
-      }
-    }
-  
-    &.inverted {
-        background-color: #ffffff;
-        color: #222;
-        border: 1px solid #333;
-  
-      &:hover, :active {
-        background-color: #FFE202;
-        color: #222;
-        border: none;
-      }
+`;
 
+//extending base button to other buttons
+export const GoogleAuthButton = styled(BaseButton)`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #4285f4;
+    background-color: white;
+    border: 1px solid #333;
+
+    &:hover {
+      color: #0a68ff;
+      background-color: #eeeeee;
+      transition: 200ms ease all;
     }
-  }
-  
+`;
+
+export const InvertedButton = styled(BaseButton)`
+    background-color: #ffffff;
+      color: #222;
+      border: 1px solid #333;
+
+    &:hover, :active {
+      background-color: #FFE202;
+      color: #222;
+      border: none;
+    }
+`;
+

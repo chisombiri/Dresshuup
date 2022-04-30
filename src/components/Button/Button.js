@@ -1,4 +1,4 @@
-import "./Button.scss";
+import {BaseButton, GoogleAuthButton, InvertedButton} from "./Button-Styles.js";
 
 const button_type_classes = {
     google: 'google-sign-in',
