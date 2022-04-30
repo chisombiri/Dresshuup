@@ -2,7 +2,7 @@ import { useState } from "react";
 import FormInput from "../Form-input/Form-input";
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword  } from "../../utils/firebase/firebase";
 import Button, { button_type_classes } from "../Button/Button";
-import "./Sign-in-form.scss";
+import "./sign-in-form.scss";
 import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
 
 //initial state for all the form fields

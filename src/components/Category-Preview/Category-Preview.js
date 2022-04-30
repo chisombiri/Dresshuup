@@ -1,7 +1,7 @@
 //individual category shown when clicked on shop page
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
-import "./Category-Preview.scss";
+import "./category-preview.scss";
 
 const CategoryPreview = ({ title, products }) => {
     return(
