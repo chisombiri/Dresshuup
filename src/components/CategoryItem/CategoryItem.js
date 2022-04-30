@@ -1,22 +1,18 @@
 //category cards that show on home page
-import './CategoryItem.scss';
+import {CategoryItemContainer, Body, BackgroundImage} from './CategoryItem-Style.js';
 
 const CategoryItem = ({ category }) => {
 
     const { title, imageUrl } = category;
 
     return(
-        <div className="category-item-container">
-          <div 
-          className="background-image" 
-          style={{
-            backgroundImage: `url(${imageUrl})`
-          }} />
-          <div className="category-item-body">
+        <CategoryItemContainer>
+          <BackgroundImage imageUrl={imageUrl} />
+          <Body>
             <h2>{title}</h2>
             <p>Shop Now!</p>
-          </div>
-        </div>
+          </Body>
+        </CategoryItemContainer>
     )
 }
 
