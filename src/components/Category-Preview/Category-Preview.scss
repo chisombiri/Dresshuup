@@ -11,6 +11,10 @@
       font-size: 24px;
       margin-bottom: 25px;
       cursor: pointer;
+
+      &:active, &:hover {
+        opacity: 0.75;
+      }
     }
   
     .preview {

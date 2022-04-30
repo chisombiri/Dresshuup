@@ -1,12 +1,12 @@
 import { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ReactComponent as DresshuupLogo } from "../../assets/dresshuup.svg";
 import { UserContext } from "../../contexts/user-context";
 import { CartContext } from "../../contexts/cart-context";
 import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../../components/Cart-Icon/Cart-Icon";
 import CartDropDown from "../../components/CartDropDown/CartDropDown";
-import './Navigation.scss';
+import {NavigationContainer, LinksContainer, LogoContainer, NavLink} from './Navigation-Styles.js';
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
@@ -14,29 +14,29 @@ const Navigation = () => {
 
     return(
       <Fragment>
-        <div className="navigation">
-            <Link className="logo-container" to='/'>
+        <NavigationContainer>
+            <LogoContainer to='/'>
                 <DresshuupLogo className="logo"/>
-            </Link>
-            <div className="links-container">
-                <Link className="nav-link" to='/shop'>
+            </LogoContainer>
+            <LinksContainer>
+                <NavLink to='/shop'>
                     SHOP
-                </Link>
+                </NavLink>
                 {
                     // sign out if current user, else sign in
                     currentUser ? (
-                        <span className="nav-link" onClick={signOutUser}>SIGN OUT</span>
+                        <NavLink as='span' onClick={signOutUser}>SIGN OUT</NavLink>
                     ) : 
                     (
-                        <Link className="nav-link" to='/auth'>
+                        <NavLink to='/auth'>
                             SIGN IN
-                        </Link>
+                        </NavLink>
                     )
                 }
                 <CartIcon />
-            </div>
+            </LinksContainer>
             {isCartOpen && <CartDropDown />}
-        </div>
+        </NavigationContainer>
         <Outlet />
       </Fragment>
     )
