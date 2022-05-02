@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from "../utils/firebase/firebase";
+import { createAction } from "../utils/reducer/reducer";
 
 //default value is passed to create context
 //actual value to be accessed 
@@ -43,7 +44,7 @@ export const UserProvider = ({ children }) => {
     // console.log(currentUser);
 
     const setCurrentUser = (user) => {
-        dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user });
+        dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
     }
 
     //passing in setter function and value
