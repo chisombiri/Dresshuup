@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 import './index.scss';
 import App from './App';
-import { UserProvider } from './contexts/user-context';
 import { CategoriesProvider } from './contexts/categories-context';
 import { CartProvider } from './contexts/cart-context';
 import reportWebVitals from './reportWebVitals';
@@ -11,15 +14,15 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider> {/*any component inside the app can access the context tree with UserProvider */}
-      <CategoriesProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <CategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </CategoriesProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

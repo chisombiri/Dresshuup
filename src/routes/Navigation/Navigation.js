@@ -1,7 +1,10 @@
 import { Fragment, useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ReactComponent as DresshuupLogo } from "../../assets/dresshuup.svg";
-import { UserContext } from "../../contexts/user-context";
+
+import { selectCurrentUser } from "../../store/user/user-selector";
+
 import { CartContext } from "../../contexts/cart-context";
 import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../../components/Cart-Icon/Cart-Icon";
@@ -9,7 +12,13 @@ import CartDropDown from "../../components/CartDropDown/CartDropDown";
 import {NavigationContainer, LinksContainer, LogoContainer, NavLink} from './Navigation-Styles.js';
 
 const Navigation = () => {
-    const { currentUser } = useContext(UserContext);
+    // const { currentUser } = useContext(UserContext);
+    
+    // selector function is passed into it. (selector function extracts off values from redux store)
+    //selector updates whenever state object changes
+
+    const currentUser = useSelector(selectCurrentUser);
+
     const { isCartOpen } = useContext(CartContext);
 
     return(
