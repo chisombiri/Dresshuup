@@ -68,13 +68,8 @@ const firebaseConfig = {
     const que_ry = query(collectionRef);
 
     const querySnapshot = await getDocs(que_ry);
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-      const { title, items } = docSnapshot.data();
-      acc[title.toLowerCase()] = items;
-      return acc;
-    }, {});
+    return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 
-    return categoryMap;
   };
 
   //reating user document from auth
