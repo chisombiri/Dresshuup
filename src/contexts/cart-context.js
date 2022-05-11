@@ -86,7 +86,7 @@ const cartReducer = (state, action) => {
         default:
             throw new Error(`Unhandled type ${type} in userReducer`);
     }
-}
+};
 
 
 export const CartProvider = ({children}) => {
