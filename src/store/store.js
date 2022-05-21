@@ -20,8 +20,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore(
     {
-    reducer: persistedReducer, 
-    middleware: [logger]
+    reducer: persistedReducer,
+    //ensure logger only runs in development and filter out if false 
+    middleware: [process.env.NODE_ENV !== 'production' && logger].filter(Boolean) 
     }
 );
 
