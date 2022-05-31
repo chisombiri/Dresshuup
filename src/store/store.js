@@ -14,7 +14,8 @@ import thunk from "redux-thunk";
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['user'] //user won't be persisted to avoid conflict with authentication
+    whitelist: ['cart'],
+    // blacklist: ['user'] //user won't be persisted to avoid conflict with authentication
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
