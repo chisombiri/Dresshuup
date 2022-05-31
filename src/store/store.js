@@ -1,5 +1,4 @@
 //redux store
-
 import { configureStore } from "@reduxjs/toolkit"
 import  { logger } from "redux-logger";
 
@@ -9,6 +8,8 @@ import storage from 'redux-persist/lib/storage';
 
 //root reducer: combination of all reducers
 import { rootReducer } from "./root-reducer";
+
+import thunk from "redux-thunk";
 
 const persistConfig = {
     key: 'root',
@@ -22,7 +23,7 @@ export const store = configureStore(
     {
     reducer: persistedReducer,
     //ensure logger only runs in development and filter out if false 
-    middleware: [process.env.NODE_ENV !== 'production' && logger].filter(Boolean) 
+    middleware: [process.env.NODE_ENV !== 'production' && logger, thunk].filter(Boolean) 
     }
 );
 
