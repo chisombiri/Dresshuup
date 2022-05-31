@@ -4,21 +4,21 @@ import { useDispatch } from "react-redux";
 
 import CategoriesPreview from "../Categories-Preview/Categories-Preview";
 import Category from "../Category/Category";
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase";
-import { setCategories } from "../../store/categories/category-action";
+// import { getCategoriesAndDocuments } from "../../utils/firebase/firebase";
+import { fetchCategoriesAsync } from "../../store/categories/category-action";
 
 const Shop = () => {
     const dispatch = useDispatch();
 
     //To ensure shop data is only added once to categories using the add collection and documents method
     useEffect(() => {
-        const getCategoriesMap = async () => {
-            const categoriesArray = await getCategoriesAndDocuments('categories');
+        dispatch(fetchCategoriesAsync());
 
-            dispatch(setCategories(categoriesArray));
-        };
+        /* const getCategoriesMap = async () => {
+           const categoriesArray = await getCategoriesAndDocuments('categories');
+         };
+        getCategoriesMap(); */
 
-        getCategoriesMap();
     }, [dispatch]);
 
     return(
