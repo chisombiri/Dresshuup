@@ -9,7 +9,11 @@ import storage from 'redux-persist/lib/storage';
 //root reducer: combination of all reducers
 import { rootReducer } from "./root-reducer";
 
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
+
+//saga replace thunk
+import createSagaMiddleware from "@redux-saga/core";
+import { rootSaga } from "./root-saga";
 
 const persistConfig = {
     key: 'root',
@@ -18,14 +22,18 @@ const persistConfig = {
     // blacklist: ['user'] //user won't be persisted to avoid conflict with authentication
 }
 
+const sagaMiddleware = createSagaMiddleware();
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore(
     {
     reducer: persistedReducer,
     //ensure logger only runs in development and filter out if false 
-    middleware: [process.env.NODE_ENV !== 'production' && logger, thunk].filter(Boolean) 
+    middleware: [process.env.NODE_ENV !== 'production' && logger, sagaMiddleware].filter(Boolean) 
     }
 );
+
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
