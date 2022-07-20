@@ -36,4 +36,5 @@ export const store = configureStore(
 
 sagaMiddleware.run(rootSaga);
 
+//persisting data to local storage export
 export const persistor = persistStore(store);
