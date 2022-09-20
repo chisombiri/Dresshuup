@@ -2,9 +2,11 @@ import { createSelector } from "reselect";
 //generate new cart total and new cart count
 //dispatch new actions cart items with appropriate payload
 
+import { RootState } from "../store";
+
 import { CartState } from "./cart-reducer";
 
-const selectCartReducer = (state): CartState => state.cart;
+const selectCartReducer = (state: RootState): CartState => state.cart;
 
 export const selectCartItems = createSelector(
   [selectCartReducer],
