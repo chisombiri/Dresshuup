@@ -10,8 +10,8 @@ import {
 } from "../../store/user/user-action";
 import Button, { button_type_classes } from "../Button/Button";
 import "./sign-in-form.scss";
-const GoogleLogo = require("../../assets/google.svg") as string;
-//import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
+//const GoogleLogo = require("../../assets/google.svg") as string;
+import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
 
 //initial state for all the form fields
 const defaultFormFields = {
