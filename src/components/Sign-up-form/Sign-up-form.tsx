@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import FormInput from "../Form-input/Form-input";
 import { useDispatch } from "react-redux";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase";
 import { signUpStart } from "../../store/user/user-action";
 import Button from "../Button/Button";
 import "./sign-up-form.scss";
@@ -24,7 +21,7 @@ const SignUpForm = () => {
 
   // console.log(formFields);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     //Update one input, other fields previously on state will be spread
     //Apply value from variable of name
@@ -36,7 +33,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("passwords do not match");
@@ -48,7 +45,7 @@ const SignUpForm = () => {
 
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
         alert("Email already exists, cannot create user");
       } else {
         console.log("Error encountered creating user", error);
@@ -82,7 +79,6 @@ const SignUpForm = () => {
         <FormInput
           label="Password: 8 characters min"
           type="password"
-          minLength="8"
           name="password"
           value={password}
           onChange={handleChange}
@@ -92,7 +88,6 @@ const SignUpForm = () => {
         <FormInput
           label="Confirm Password: 8 characters min"
           type="password"
-          minLength="8"
           name="confirmPassword"
           value={confirmPassword}
           onChange={handleChange}

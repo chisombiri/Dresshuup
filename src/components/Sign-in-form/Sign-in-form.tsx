@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 
 import FormInput from "../Form-input/Form-input";
@@ -9,7 +10,8 @@ import {
 } from "../../store/user/user-action";
 import Button, { button_type_classes } from "../Button/Button";
 import "./sign-in-form.scss";
-import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
+const GoogleLogo = require("../../assets/google.svg") as string;
+//import { ReactComponent as GoogleLogo } from "../../assets/google.svg";
 
 //initial state for all the form fields
 const defaultFormFields = {
@@ -24,7 +26,7 @@ const SignInForm = () => {
 
   // console.log(formFields);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     //Update one input, other fields previously on state will be spread
     //Apply value from variable of name
@@ -40,7 +42,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -49,12 +51,12 @@ const SignInForm = () => {
       resetFormFields();
     } catch (error) {
       if (
-        error.code === "auth/wrong-password" ||
-        error.code === "auth/user-not-found"
+        (error as AuthError).code === AuthErrorCodes.INVALID_PASSWORD ||
+        (error as AuthError).code === AuthErrorCodes.USER_DELETED
       ) {
         alert("Please check for correct email or password");
       } else {
-        console.log("Error encounted creating user", error);
+        console.log("Error encountered creating user", error);
       }
     }
   };
@@ -76,7 +78,6 @@ const SignInForm = () => {
         <FormInput
           label="Password"
           type="password"
-          minLength="8"
           name="password"
           value={password}
           onChange={handleChange}
