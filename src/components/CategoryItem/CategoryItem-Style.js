@@ -32,6 +32,12 @@ export const Body = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
+
+  @media screen and (max-width: 700px) {
+    h2 {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const CategoryItemContainer = styled.div`
