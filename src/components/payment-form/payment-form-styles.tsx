@@ -9,12 +9,16 @@ export const PaymentFormContainer = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 800px) {
+    text-align: center;
     width: 50%;
   }
 `;
 
 export const FormContainer = styled.form`
-  height: 100px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 500px;
 
   @media screen and (max-width: 800px) {
