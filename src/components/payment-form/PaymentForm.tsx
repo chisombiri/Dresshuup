@@ -1,16 +1,16 @@
 import { useState, FormEvent } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cart-selector";
 import { selectCurrentUser } from "../../store/user/user-selector";
 
 import { button_type_classes } from "../Button/Button";
-
 import {
   PaymentFormContainer,
   FormContainer,
   PaymentButton,
 } from "./payment-form-styles";
+
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const PaymentForm = () => {
   const stripe = useStripe();
