@@ -31,6 +31,29 @@
         display: flex;
       }
     }
+
+    @media screen and (max-width: 800px) {
+      img {
+        max-width: 100%;
+      }
+
+      button {
+        display: block;
+        opacity: 0.9;
+        min-width: unset;
+        padding: 0 8px;
+      }
+
+      &:hover {
+        img {
+          opacity: unset;
+        }
+    
+        button {
+          opacity: unset;
+        }
+      }
+    }
   
     .footer {
       width: 100%;

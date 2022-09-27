@@ -3,6 +3,10 @@
     flex-direction: column;
     margin-bottom: 32px;
 
+    @media screen and (max-width: 800px) {
+      align-items: center;
+    }
+
     h2 {
         text-align: center;
     }
@@ -21,5 +25,10 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       column-gap: 24px;
+
+      @media screen and (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 32px;
+      }
     }
   }

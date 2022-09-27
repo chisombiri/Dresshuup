@@ -9,12 +9,23 @@ export const NavigationContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 32px;
+
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: 8px;
+    margin-bottom: 24px;
+  }
 `;
 
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
   padding: 24px;
+
+  @media screen and (max-width: 800px) {
+    width: 50px;
+    padding: 0;
+  }
 `;
 
 export const LinksContainer = styled.div`
@@ -23,6 +34,10 @@ export const LinksContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
 `;
 
 export const NavLink = styled(Link)`
