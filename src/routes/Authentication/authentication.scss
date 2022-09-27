@@ -5,11 +5,12 @@
     margin: 32px auto;
 
     @media screen and (max-width: 800px) {
+        padding-left: 32px;
         flex-direction: column;
         width: unset;
         align-items: center;
         > *:first-child {
-          margin-bottom: 50px;
+          margin-bottom: 56px;
         }
     }
 }
