@@ -7,11 +7,7 @@ import {
 
 import { setIsCartOpen } from "../../store/cart/cart-action";
 
-import {
-  CartIconContainer,
-  ShoppingIcon,
-  ItemCount,
-} from "./Cart-Icon-Styles.js";
+import { CartIconContainer, ShoppingIcon, ItemCount } from "./Cart-Icon-Styles";
 
 const CartIcon = () => {
   // const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);

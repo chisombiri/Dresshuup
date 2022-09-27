@@ -6,7 +6,7 @@ import {
   GoogleAuthButton,
   InvertedButton,
   ButtonSpinner,
-} from "./Button-Styles.js";
+} from "./Button-Styles";
 
 export enum button_type_classes {
   base = "base",
